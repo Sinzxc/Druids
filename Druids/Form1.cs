@@ -11,9 +11,11 @@ using System.Windows.Forms;
 
 namespace Druids
 {
+   
     public partial class Form1 : Form
     {
-        int day;
+        int day=1,month=1;
+        DateTime date = new DateTime();
         public Form1()
         {
             InitializeComponent();
@@ -63,9 +65,23 @@ namespace Druids
             this.Visible = false;
         }
 
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            month=(comboBox2.SelectedIndex + 1);
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            date = new DateTime(2000, month, day);
+            label1.Text = date.ToString();
+        }
+
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            day=(comboBox1.SelectedIndex + 1);
         }
+       
+    
     }
 }
