@@ -16,7 +16,7 @@ namespace Druids
         {
             InitializeComponent();
             System.Drawing.Text.PrivateFontCollection f = new System.Drawing.Text.PrivateFontCollection();
-            f.AddFontFile("Fonts/Vetka.ttf");
+            f.AddFontFile("Vetka.ttf");
 
             выходToolStripMenuItem.Font = new Font(f.Families[0], 30, style: FontStyle.Bold);
             оПрограммеToolStripMenuItem.Font = new Font(f.Families[0], 30, style: FontStyle.Bold);

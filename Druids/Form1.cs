@@ -20,7 +20,7 @@ namespace Druids
         {
             InitializeComponent();
             System.Drawing.Text.PrivateFontCollection f = new System.Drawing.Text.PrivateFontCollection();
-            f.AddFontFile("Fonts/Vetka.ttf");
+            f.AddFontFile("Vetka.ttf");
 
             выходToolStripMenuItem.Font = new Font(f.Families[0], 30,style:FontStyle.Bold);
             оПрограммеToolStripMenuItem.Font = new Font(f.Families[0], 30, style: FontStyle.Bold);
@@ -74,14 +74,26 @@ namespace Druids
         private void button1_Click(object sender, EventArgs e)
         {
             date = new DateTime(2000, month, day);
-            label1.Text = date.ToString();
+            if (date.IsInRange(new DateTime(2000, 12, 23), new DateTime(2001, 1, 10)) || date.IsInRange(new DateTime(2000, 6, 25), new DateTime(2000, 7, 4)))
+                label1.Text = "Яблоня";
+            if (date.IsInRange(new DateTime(2000, 1, 2), new DateTime(2001, 1, 11)) || date.IsInRange(new DateTime(2000, 7, 5), new DateTime(2000, 7, 14)))
+                label1.Text = "Пихта";
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             day=(comboBox1.SelectedIndex + 1);
         }
-       
-    
+
+        
+
+
+    }
+    public static class DateTimeExtensions
+    {
+        public static bool IsInRange(this DateTime dateToCheck, DateTime startDate, DateTime endDate)
+        {
+            return dateToCheck >= startDate && dateToCheck < endDate;
+        }
     }
 }
